@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHANTOM DRIVE - Cyberpunk Racing</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 頁面特定樣式 */
+        .hero-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('images/cyberpunk_car.png');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .title-box {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            text-align: right;
+        }
+        
+        .start-button-container {
+            position: absolute;
+            bottom: 60px;
+            left: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-container">
+        <div class="title-box">
+            <h1 class="glitch" data-text="PHANTOM DRIVE">PHANTOM DRIVE</h1>
+            <p class="subtitle">HYPERDRIFT_404</p>
+        </div>
+        
+        <div class="start-button-container">
+            <button id="startButton" class="cybr-btn">
+                START GAME<span aria-hidden>_</span>
+                <span aria-hidden class="cybr-btn__glitch">START GAME_</span>
+                <span aria-hidden class="cybr-btn__tag">R25</span>
+            </button>
+        </div>
+        
+        <div class="scanner"></div>
+    </div>
+
+    <!-- Simple JS for homepage -->
+    <script>
+        document.getElementById("startButton").addEventListener("click", function() {
+            window.location.href = "showcase.html"; // Redirect to vehicle showcase
+            console.log("Navigating to showcase.html");
+        });
+    </script>
+</body>
+</html>
