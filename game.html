@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Racing - Track Sprint</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen">
+        <div class="cyberpunk-loader">
+            <div class="loader-bar"></div>
+            <div class="loader-text">Connecting Quantum Engine...</div>
+        </div>
+        <div id="loadingBar">
+            <div id="loadingProgress"></div>
+        </div>
+        <p id="loadingText">Initializing Track Environment...</p>
+    </div>
+    
+    <!-- Game Container -->
+    <div id="gameContainer"></div>
+    
+    <!-- Back Button -->
+    <a id="backLink" href="index.html">Exit Track</a>
+    
+    <!-- Debug Info Panel -->
+    <div id="debugInfo"></div>
+    
+    <!-- Game Controls Info -->
+    <div id="controlsInfo">
+        <h3>Driving Controls</h3>
+        <p>W or ↑: Accelerate</p>
+        <p>S or ↓: Brake/Reverse</p>
+        <p>A or ←: Turn Left</p>
+        <p>D or →: Turn Right</p>
+    </div>
+    
+    <!-- Game Status Panel -->
+    <div id="gameUI">
+        <div id="speedometer">
+            <div class="speedo-label">SPEED</div>
+            <div id="speedValue">0</div>
+            <div class="speedo-unit">KM/H</div>
+        </div>
+        <div id="lap-info">
+            <div>Laps: <span id="lapsValue">0</span></div>
+            <div>Score: <span id="scoreValue">0</span></div>
+        </div>
+    </div>
+    
+    <!-- Load Three.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script>
+        // Confirm Three.js loaded successfully
+        if (typeof THREE === 'undefined') {
+            alert('Three.js failed to load. Please check your internet connection or refresh the page.');
+        } else {
+            document.getElementById('loadingProgress').style.width = '30%';
+            document.getElementById('loadingText').textContent = 'Three.js Engine Started';
+        }
+    </script>
+    
+    <!-- Load Additional Three.js Modules -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/curves/CatmullRomCurve3.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/geometries/TubeGeometry.js"></script>
+    
+    <!-- Load Game Script -->
+    <script src="game.js"></script>
+    
+    <!-- Touch Controls Area -->
+    <div class="touch-controls">
+        <button id="accelerate" class="control-btn">W</button>
+        <div class="direction-controls">
+            <button id="turn-left" class="control-btn">A</button>
+            <button id="brake" class="control-btn">S</button>
+            <button id="turn-right" class="control-btn">D</button>
+        </div>
+    </div>
+    
+    <script>
+        // Force close loading screen
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loadingScreen = document.getElementById('loadingScreen');
+                if (loadingScreen) {
+                    loadingScreen.style.opacity = '0';
+                    setTimeout(function() {
+                        loadingScreen.style.display = 'none';
+                    }, 500);
+                }
+            }, 4000);
+        });
+    </script>
+</body>
+</html>

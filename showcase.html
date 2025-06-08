@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Racer - Vehicle Showcase</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading screen -->
+    <div id="loadingScreen">
+        <div class="cyberpunk-loader">
+            <div class="loader-bar"></div>
+            <div class="loader-text">LOADING VEHICLE MODEL...</div>
+        </div>
+        <div id="loadingBar">
+            <div id="loadingProgress"></div>
+        </div>
+        <p id="loadingText">CONNECTING TO QUANTUM SYSTEM...</p>
+    </div>
+    
+    <!-- Vehicle showcase container -->
+    <div id="showcaseContainer"></div>
+    
+    <!-- Control panel -->
+    <div class="showcase-controls">
+        <div class="control-text">DRAG MOUSE TO ROTATE VEHICLE</div>
+        <button id="continueButton" class="cybr-btn">
+            START RACING<span aria-hidden>_</span>
+            <span aria-hidden class="cybr-btn__glitch">START RACING_</span>
+            <span aria-hidden class="cybr-btn__tag">R25</span>
+        </button>
+        <a href="index.html" class="back-link">BACK TO MENU</a>
+    </div>
+    
+    <!-- Vehicle specifications panel -->
+    <div class="car-specs">
+        <h3>VEHICLE SPECS</h3>
+        <ul>
+            <li>MAX SPEED: <span class="value">320 KM/H</span></li>
+            <li>ACCELERATION: <span class="value">0-100 KM 3.2s</span></li>
+            <li>ENGINE: <span class="value">QUANTUM CORE V12</span></li>
+            <li>CHASSIS: <span class="value">CARBON NANOFIBER</span></li>
+        </ul>
+    </div>
+    
+    <!-- Load Three.js libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+    
+    <!-- Vehicle showcase script -->
+    <script src="showcase.js"></script>
+    
+    <script>
+        // Force close loading screen after timeout
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loadingScreen').style.opacity = '0';
+                setTimeout(function() {
+                    document.getElementById('loadingScreen').style.display = 'none';
+                }, 500);
+            }, 2000);
+        });
+        
+        // Continue button redirects to game page
+        document.getElementById('continueButton').addEventListener('click', function() {
+            window.location.href = 'game.html';
+        });
+    </script>
+</body>
+</html>
