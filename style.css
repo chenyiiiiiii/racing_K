@@ -1,0 +1,743 @@
+/* 賽車遊戲的賽博朋克風格 CSS */
+
+/* 字型導入 */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap');
+
+/* 全局樣式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #00f3ff;
+    --secondary: #ff003c;
+    --dark-bg: #070315;
+    --accent: #fd0;
+    --text: #ffffff;
+    --grid-color: rgba(0, 243, 255, 0.1);
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Rajdhani', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* 首頁容器賽博朋克風格 */
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, rgba(50, 2, 89, 0.5) 0%, rgba(7, 3, 21, 0.8) 70%);
+    position: relative;
+    overflow: hidden;
+}
+
+.container:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(transparent 65%, rgba(0, 243, 255, 0.2)), 
+                repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0, 243, 255, 0.06) 40px, rgba(0, 243, 255, 0.06) 41px),
+                repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(0, 243, 255, 0.06) 40px, rgba(0, 243, 255, 0.06) 41px);
+    pointer-events: none;
+}
+
+.container:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, transparent 0%, var(--dark-bg) 70%);
+    pointer-events: none;
+}
+
+/* 霓虹文字效果 */
+.glitch-container {
+    position: relative;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.glitch {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(3rem, 10vw, 5rem);
+    font-weight: 700;
+    color: var(--text);
+    position: relative;
+    text-shadow: 
+        0 0 5px var(--primary),
+        0 0 10px var(--primary),
+        0 0 20px var(--primary);
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--secondary);
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-effect 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 var(--accent);
+    clip: rect(44px, 450px, 46px, 0);
+    animation: glitch-effect 4s infinite linear alternate-reverse;
+    animation-delay: 1s;
+}
+
+@keyframes glitch-effect {
+    0% {
+        clip: rect(43px, 9999px, 44px, 0);
+    }
+    5% {
+        clip: rect(12px, 9999px, 59px, 0);
+    }
+    10% {
+        clip: rect(54px, 9999px, 73px, 0);
+    }
+    15% {
+        clip: rect(94px, 9999px, 92px, 0);
+    }
+    20% {
+        clip: rect(23px, 9999px, 23px, 0);
+    }
+    25% {
+        clip: rect(13px, 9999px, 76px, 0);
+    }
+    30% {
+        clip: rect(15px, 9999px, 59px, 0);
+    }
+    35% {
+        clip: rect(26px, 9999px, 75px, 0);
+    }
+    40% {
+        clip: rect(46px, 9999px, 83px, 0);
+    }
+    45% {
+        clip: rect(37px, 9999px, 63px, 0);
+    }
+    50% {
+        clip: rect(71px, 9999px, 22px, 0);
+    }
+    55% {
+        clip: rect(67px, 9999px, 46px, 0);
+    }
+    60% {
+        clip: rect(64px, 9999px, 14px, 0);
+    }
+    65% {
+        clip: rect(23px, 9999px, 13px, 0);
+    }
+    70% {
+        clip: rect(34px, 9999px, 82px, 0);
+    }
+    75% {
+        clip: rect(84px, 9999px, 96px, 0);
+    }
+    80% {
+        clip: rect(63px, 9999px, 93px, 0);
+    }
+    85% {
+        clip: rect(31px, 9999px, 65px, 0);
+    }
+    90% {
+        clip: rect(70px, 9999px, 60px, 0);
+    }
+    95% {
+        clip: rect(40px, 9999px, 53px, 0);
+    }
+    100% {
+        clip: rect(19px, 9999px, 23px, 0);
+    }
+}
+
+.subtitle {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-top: -1rem;
+    text-transform: uppercase;
+}
+
+@keyframes glow {
+    from {
+        text-shadow:
+            0 0 5px var(--primary),
+            0 0 10px var(--primary),
+            0 0 15px var(--primary);
+    }
+    to {
+        text-shadow:
+            0 0 10px var(--primary),
+            0 0 20px var(--primary),
+            0 0 30px var(--primary);
+    }
+}
+
+/* 賽博朋克風格按鈕 */
+.cybr-btn {
+    --btn-font-family: Rajdhani;
+    --btn-font-size: 26px;
+    --btn-padding: 1.5rem 3.5rem;
+    --btn-border-width: 2px;
+    --btn-color-primary: var(--primary);
+    --btn-color-primary-rgb: 0, 243, 255;
+    --btn-color-dark: var(--dark-bg);
+    --btn-color-light: var(--text);
+    --btn-color-light-rgb: 255, 255, 255;
+  
+    --btn-border-color: var(--primary);
+    --btn-border-color-outset: var(--secondary);
+    --btn-glitch-duration: 0.8s;
+    --btn-glitch-interval: 3s;
+    --btn-hover-spread-duration: 1.5s;
+  
+    position: relative;
+    padding: var(--btn-padding);
+    font-family: var(--btn-font-family);
+    font-size: var(--btn-font-size);
+    font-weight: 500;
+    background: var(--btn-color-dark);
+    color: var(--btn-color-light);
+    border: 0;
+    border-top: var(--btn-border-width) solid var(--btn-border-color);
+    border-bottom: var(--btn-border-width) solid var(--btn-border-color);
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.2s;
+    box-shadow: 
+        0 0 5px var(--primary),
+        0 0 10px rgba(var(--btn-color-primary-rgb), 0.5),
+        0 0 15px rgba(var(--btn-color-primary-rgb), 0.3);
+}
+
+.cybr-btn:hover {
+    color: var(--btn-color-light);
+    background: transparent;
+    box-shadow: 
+        0 0 10px var(--primary),
+        0 0 20px rgba(var(--btn-color-primary-rgb), 0.5),
+        0 0 30px rgba(var(--btn-color-primary-rgb), 0.3);
+}
+
+.cybr-btn:before,
+.cybr-btn:after {
+    content: '';
+    position: absolute;
+    width: calc(100% + var(--btn-border-width) * 2);
+    height: calc(var(--btn-border-width) * 2);
+    background: var(--btn-border-color);
+    z-index: -1;
+}
+
+.cybr-btn:before {
+    top: calc(var(--btn-border-width) * -1);
+    left: calc(var(--btn-border-width) * -1);
+}
+
+.cybr-btn:after {
+    bottom: calc(var(--btn-border-width) * -1);
+    right: calc(var(--btn-border-width) * -1);
+}
+
+.cybr-btn__glitch {
+    display: none;
+    position: absolute;
+    top: calc(var(--btn-padding-y) * -1);
+    left: calc(var(--btn-padding-x) * -1);
+    right: calc(var(--btn-padding-x) * -1);
+    bottom: calc(var(--btn-padding-y) * -1);
+    background: var(--btn-border-color-outset);
+    text-shadow: 2px 2px var(--btn-color-dark), -2px -2px var(--btn-border-color);
+    clip: rect(0, 0, 0, 0);
+}
+
+.cybr-btn:hover .cybr-btn__glitch {
+    display: block;
+    animation: glitch var(--btn-glitch-duration) infinite steps(2);
+}
+
+.cybr-btn__tag {
+    position: absolute;
+    padding: 2px 8px;
+    letter-spacing: 1px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    bottom: -15%;
+    right: 5%;
+    color: var(--accent);
+    background: var(--dark-bg);
+    border-top: 1px solid var(--accent);
+    box-shadow: 0 0 5px var(--accent);
+}
+
+/* 首頁掃描線動畫 */
+.scanner {
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, 
+        transparent 0%, 
+        rgba(var(--btn-color-primary-rgb), 0.3) 10%, 
+        rgba(var(--btn-color-primary-rgb), 0.7) 50%, 
+        rgba(var(--btn-color-primary-rgb), 0.3) 90%, 
+        transparent 100%);
+    animation: scan 5s linear infinite;
+    box-shadow: 0 0 10px var(--primary);
+    z-index: 10;
+}
+
+@keyframes scan {
+    0% {
+        top: 0;
+    }
+    100% {
+        top: 100%;
+    }
+}
+
+/* 載入畫面 */
+#loadingScreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text);
+    z-index: 1000;
+    transition: opacity 0.5s ease;
+}
+
+.cyberpunk-loader {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.loader-bar {
+    width: 150px;
+    height: 6px;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(var(--btn-color-primary-rgb), 0.8);
+    animation: loading-bar 2s infinite;
+}
+
+.loader-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, var(--text), transparent);
+    animation: loading-swipe 1.5s infinite;
+}
+
+@keyframes loading-bar {
+    0%, 100% {
+        transform: scaleX(0.7);
+    }
+    50% {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes loading-swipe {
+    0% {
+        left: -50%;
+    }
+    100% {
+        left: 150%;
+    }
+}
+
+.loader-text {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--primary);
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px var(--primary);
+}
+
+#loadingBar {
+    width: 300px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-top: 20px;
+    border-radius: 0;
+    overflow: hidden;
+    border: 1px solid var(--primary);
+    position: relative;
+}
+
+#loadingProgress {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(to right, var(--secondary), var(--primary));
+    transition: width 0.3s;
+    position: relative;
+}
+
+#loadingProgress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(0, 0, 0, 0.1) 10px,
+        rgba(0, 0, 0, 0.1) 20px
+    );
+}
+
+#loadingText {
+    margin-top: 10px;
+    font-size: 1em;
+    opacity: 0.8;
+    color: var(--accent);
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: 1px;
+}
+
+/* 遊戲容器 */
+#gameContainer, #showcaseContainer {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+/* 返回按鈕 */
+#backLink, .back-link {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: var(--text);
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 8px 16px;
+    border: 1px solid var(--primary);
+    z-index: 10;
+    transition: all 0.3s;
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 0 5px var(--primary);
+}
+
+#backLink:hover, .back-link:hover {
+    background-color: var(--primary);
+    color: var(--dark-bg);
+}
+
+/* 調試資訊 */
+#debugInfo {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: var(--text);
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 8px;
+    border-radius: 0;
+    font-size: 12px;
+    z-index: 100;
+    max-width: 300px;
+    max-height: 150px;
+    overflow: auto;
+    border-left: 2px solid var(--primary);
+    font-family: monospace;
+}
+
+/* 遊戲控制說明 */
+#controlsInfo {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: var(--text);
+    padding: 15px;
+    border-radius: 0;
+    z-index: 100;
+    border-top: 2px solid var(--primary);
+    border-bottom: 2px solid var(--secondary);
+    box-shadow: 0 0 10px rgba(var(--btn-color-primary-rgb), 0.5);
+}
+
+#controlsInfo h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--primary);
+    font-size: 1.2em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+#controlsInfo p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: var(--text);
+}
+
+/* 遊戲狀態UI */
+#gameUI {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-family: 'Orbitron', sans-serif;
+    color: var(--text);
+}
+
+#speedometer {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-left: 3px solid var(--primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(var(--btn-color-primary-rgb), 0.3);
+}
+
+.speedo-label {
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+}
+
+#speedValue {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin: 5px 0;
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary);
+}
+
+.speedo-unit {
+    font-size: 0.7em;
+    opacity: 0.7;
+}
+
+#lap-info {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 15px;
+    border-left: 3px solid var(--secondary);
+    box-shadow: 0 0 10px rgba(255, 0, 60, 0.3);
+}
+
+#scoreValue, #lapsValue {
+    font-weight: 700;
+    color: var(--accent);
+}
+
+/* 車輛展示頁面 */
+.showcase-controls {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    z-index: 10;
+}
+
+.control-text {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-top: 1px solid var(--primary);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: 1px;
+}
+
+.car-specs {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-left: 3px solid var(--primary);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    z-index: 10;
+    max-width: 300px;
+}
+
+.car-specs h3 {
+    margin-top: 0;
+    color: var(--primary);
+    font-size: 1.2em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.car-specs ul {
+    list-style: none;
+    padding: 0;
+}
+
+.car-specs li {
+    margin: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+}
+
+.car-specs .value {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* 觸控控制UI */
+.touch-controls {
+    position: fixed;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.direction-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.control-btn {
+    width: 60px;
+    height: 60px;
+    border: 1px solid var(--primary);
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--text);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    pointer-events: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.control-btn:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 45%, var(--primary) 50%, transparent 55%);
+    opacity: 0.2;
+}
+
+.control-btn:active {
+    background-color: var(--primary);
+    color: var(--dark-bg);
+}
+
+#accelerate {
+    border-color: var(--accent);
+    margin-bottom: 10px;
+}
+
+#brake {
+    border-color: var(--secondary);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .cybr-btn {
+        --btn-padding: 1rem 2rem;
+        --btn-font-size: 20px;
+    }
+    
+    #gameUI {
+        top: 10px;
+        left: 10px;
+    }
+    
+    #speedometer {
+        padding: 10px;
+    }
+    
+    #speedValue {
+        font-size: 2em;
+    }
+    
+    #controlsInfo {
+        padding: 10px;
+        bottom: 100px;
+        font-size: 0.8em;
+    }
+    
+    .car-specs {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+    
+    .control-btn {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* 動畫 */
+@keyframes glitch {
+    0% {
+        clip: rect(41px, 9999px, 65px, 0);
+    }
+    100% {
+        clip: rect(57px, 9999px, 29px, 0);
+    }
+}
